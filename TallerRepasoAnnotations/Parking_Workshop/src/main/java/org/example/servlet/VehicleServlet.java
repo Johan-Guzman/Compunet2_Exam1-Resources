@@ -20,8 +20,9 @@ public class VehicleServlet extends HttpServlet { //PONER EL HTTPSERVLET PQ ES S
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        vehicleservice = AppContext.getInstance().getBean("vehicleService",VehicleService.class);
 
+        vehicleservice = AppContext.getInstance().getBean("vehicleService",VehicleService.class);
+        vehicleservice.initRepository();
     }
 
     //EN EL JSP LOS NOMBRE QUE LE PONGAS A LAS ETIQUETAS EN EL HTML, DEBEN SER LOS MISMOS QE USASTE EN ESTE METODO O SINO NO TE GUARDAN, GUZ

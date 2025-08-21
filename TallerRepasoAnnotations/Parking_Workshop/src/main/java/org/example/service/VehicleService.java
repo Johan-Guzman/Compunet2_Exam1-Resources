@@ -29,4 +29,8 @@ public class VehicleService {
     public ArrayList<Vehicle> getVehicles() {
         return vehicleRepository.getVehicles();
     }
+
+    public void initRepository() {
+        vehicleRepository.initRepo();
+    }
 }
