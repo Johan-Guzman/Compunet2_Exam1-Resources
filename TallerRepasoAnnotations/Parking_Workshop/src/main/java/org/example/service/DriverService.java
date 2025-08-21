@@ -33,9 +33,7 @@ public class DriverService {
         }
 
 
-        public void initRepository() {
-        driverRepository.initRepo();
-        }
+
 
 
 }

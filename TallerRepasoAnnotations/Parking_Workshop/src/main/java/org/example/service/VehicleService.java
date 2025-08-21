@@ -30,7 +30,8 @@ public class VehicleService {
         return vehicleRepository.getVehicles();
     }
 
-    public void initRepository() {
-        vehicleRepository.initRepo();
-    }
+   public Vehicle findByPlaca(String placa){
+        return vehicleRepository.findByPlaca(placa);
+
+   }
 }

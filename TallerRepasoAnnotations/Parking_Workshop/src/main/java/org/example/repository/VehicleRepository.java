@@ -28,6 +28,15 @@ public class VehicleRepository {
         return vehicles;
     }
 
+    public Vehicle findByPlaca(String placa){
+        for(Vehicle vehicle : vehicles){
+            if(vehicle.getPlaca().equals(placa)){
+                return vehicle;
+            }
+        }
+        return null;
+    }
+
 
 
 }

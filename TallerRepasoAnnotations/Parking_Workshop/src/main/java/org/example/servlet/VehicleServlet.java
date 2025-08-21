@@ -22,22 +22,40 @@ public class VehicleServlet extends HttpServlet { //PONER EL HTTPSERVLET PQ ES S
     public void init(ServletConfig config) throws ServletException {
 
         vehicleservice = AppContext.getInstance().getBean("vehicleService",VehicleService.class);
-        vehicleservice.initRepository();
+
     }
 
     //EN EL JSP LOS NOMBRE QUE LE PONGAS A LAS ETIQUETAS EN EL HTML, DEBEN SER LOS MISMOS QE USASTE EN ESTE METODO O SINO NO TE GUARDAN, GUZ
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        vehicleservice.addVehicle(new Vehicle(req.getParameter("id"), req.getParameter("placa"), req.getParameter("cilindraje"), req.getParameter("typeFuel"), req.getParameter("numberMotor"), req.getParameter("brand"), req.getParameter("model"), req.getParameter("")));
+        vehicleservice.addVehicle(new Vehicle(req.getParameter("id"), req.getParameter("placa"), req.getParameter("cilindraje"), req.getParameter("typeFuel"), req.getParameter("numberMotor"), req.getParameter("brand"), req.getParameter("model"), req.getParameter("conductorId")));
         System.out.println(vehicleservice.getVehicles());
         resp.sendRedirect("./");
+
+
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("vehicles", vehicleservice.getVehicles());
-        req.getRequestDispatcher("/listVehicles.jsp").forward(req, resp);
+        // Leer parámetro "placa" de la URL
+        String placa = req.getParameter("placa");
+
+        if (placa != null && !placa.isEmpty()) {
+            // Buscar un vehículo específico
+            Vehicle vehiculo = vehicleservice.findByPlaca(placa);
+            req.setAttribute("vehiculo", vehiculo);
+            req.getRequestDispatcher("/findByPlaca.jsp").forward(req, resp);
+        } else {
+            // Si no hay parámetro, listar todos
+            req.setAttribute("vehicles", vehicleservice.getVehicles());
+            req.getRequestDispatcher("/listVehicles.jsp").forward(req, resp);
+        }
     }
+
+
+
+
+
 
 }

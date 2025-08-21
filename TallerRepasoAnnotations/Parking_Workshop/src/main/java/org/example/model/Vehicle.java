@@ -79,4 +79,12 @@ public class Vehicle {
     public void setTypeFuel(String typeFuel) {
         this.typeFuel = typeFuel;
     }
+
+    public String getConductorId() {
+        return conductorId;
+    }
+
+    public void setConductorId(String conductorId) {
+        this.conductorId = conductorId;
+    }
 }
