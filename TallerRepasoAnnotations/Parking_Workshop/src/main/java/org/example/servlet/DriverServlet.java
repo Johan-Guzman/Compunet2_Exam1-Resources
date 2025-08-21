@@ -9,9 +9,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.app.AppContext;
 import org.example.model.Driver;
+import org.example.model.Vehicle;
 import org.example.service.DriverService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.UUID;
 
 @WebServlet("/driver")
@@ -30,7 +32,7 @@ public class DriverServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println(">>>>>>>>>" + driverService.getDrivers());
         driverService.addDriver(
-                new Driver(UUID.randomUUID().toString(),
+                new Driver(req.getParameter("id"),
                         req.getParameter("name"),
                         req.getParameter("numberIdentification"),
                         req.getParameter("occupation"),
@@ -43,6 +45,12 @@ public class DriverServlet extends HttpServlet {
         resp.sendRedirect("./");
     }
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String numberIdentification = req.getParameter("numberIdentification");
+        Driver driver = driverService.getDriversVehicles(numberIdentification); // devuelve 1 solo
+        req.setAttribute("driver", driver);
+        req.getRequestDispatcher("/findByID.jsp").forward(req, resp);
 
-
+    }
 }

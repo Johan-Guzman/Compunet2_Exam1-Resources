@@ -16,6 +16,8 @@
 <form action="driver" method="post">
 
     <label>ID</label>
+    <input type="text" name="id" required><br>
+
 
     <label>Nombre:</label>
     <input type="text" name="name" required><br>

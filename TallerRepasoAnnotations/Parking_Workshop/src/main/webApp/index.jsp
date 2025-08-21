@@ -13,7 +13,8 @@
     <li><a href="viewVehicles.jsp">Ver Vehiculos</a></li>
     <li><a href="viewDrivers.jsp">Ver Conductores</a></li>
     <li><a href="findByPlaca.jsp">Buscar por Placa</a></li>
-    <li><a href="findByPlaca.jsp">Buscar por Placa</a></li>
+    <li><a href="findByID.jsp">Buscar por Placa</a></li>
+
 
 </ul>
 <a href="index.jsp">

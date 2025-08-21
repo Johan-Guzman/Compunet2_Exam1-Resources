@@ -2,6 +2,7 @@ package org.example.repository;
 
 
 import org.example.model.Driver;
+import org.example.model.Vehicle;
 import org.springframework.stereotype.Repository;
 import javax.annotation.PostConstruct;
 
@@ -28,6 +29,15 @@ public class DriverRepository {
     }
     public ArrayList<Driver> getDrivers() {
         return drivers;
+    }
+
+    public Driver getDriverAndVehicles(String numberIdentification) {
+        for (Driver driver : drivers) {
+            if (driver.getNumberIdentification().equals(numberIdentification)) {
+                return driver;
+            }
+        }
+        return null;
     }
 
 

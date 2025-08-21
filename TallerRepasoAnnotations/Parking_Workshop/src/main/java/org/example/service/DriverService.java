@@ -2,6 +2,7 @@ package org.example.service;
 
 
 import org.example.model.Driver;
+import org.example.model.Vehicle;
 import org.example.repository.DriverRepository;
 import org.example.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,11 @@ public class DriverService {
             return driverRepository.getDrivers();
         }
 
+
+        public Driver getDriversVehicles(String numberIdentification) {
+        return driverRepository.getDriverAndVehicles(numberIdentification);
+
+        }
 
 
 
