@@ -22,10 +22,10 @@
 
 <html>
 <head>
-    <title>Lista de Vehículos</title>
+    <title>Lista de CONDUCTORES</title>
 </head>
 <body>
-<h2>Vehículos Registrados</h2>
+<h2>CONDUCTORES Registrados</h2>
 <table border="1">
     <tr>
         <th>ID</th>
